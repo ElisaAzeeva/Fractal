@@ -6,33 +6,33 @@ using System.Threading.Tasks;
 
 namespace FractalsLibrary
 {
-    interface IDrawableShape
-    {
-        void DrawShape();
-    }
+    //interface IDrawableShape
+    //{
+    //    void DrawShape();
+    //}
 
-    interface IDraw
-    {
-        void Draw(IDrawableShape shape);
-    }
+    //interface IDraw
+    //{
+    //    void Draw(IDrawableShape shape);
+    //}
 
-    class WindowFormsDrawer : IDraw
-    {
-        public void Draw(IDrawableShape shape)
-        {
-            // 1
-            shape.DrawShape();
+    //class WindowFormsDrawer : IDraw
+    //{
+    //    public void Draw(IDrawableShape shape)
+    //    {
+    //        // 1
+    //        shape.DrawShape();
 
-            // 2
-            switch (shape.GetType())
-            {
-                case 1:
-                    break;
-                case 2:
-                    break;
-                default:
-                    break;
-            }
-        }
-    }
+    //        // 2
+    //        switch (shape.GetType())
+    //        {
+    //            case 1:
+    //                break;
+    //            case 2:
+    //                break;
+    //            default:
+    //                break;
+    //        }
+    //    }
+    //}
 }

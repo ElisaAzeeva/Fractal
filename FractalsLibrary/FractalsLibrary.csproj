@@ -33,6 +33,7 @@
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Numerics" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -40,8 +41,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Class1.cs" />
-    <Compile Include="Class2.cs" />
+    <Compile Include="BarnsleyFern.cs" />
+    <Compile Include="MathHelper.cs" />
+    <Compile Include="PifagorTree.cs" />
+    <Compile Include="JuliaSet.cs" />
     <Compile Include="IDraw.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

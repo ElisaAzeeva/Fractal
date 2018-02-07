@@ -7,18 +7,26 @@ using System.Drawing;
 
 namespace FractalsLibrary
 {
+    // TODO: в отдельный файл
     interface IFractal
     {
         void Create();
         Bitmap FractalBitmap { get; set; }
     }
 
-    abstract class FractalBase : IFractal
+    // TODO: в отдельный файл
+    // TODO: добавить недостающие реализации фракталов
+    public abstract class FractalBase : IFractal
     {
         public FractalBase(int width, int height)
         {
-            FractalBitmap = new Bitmap(width, height);
+            Width = width;
+            Height = height;
+            FractalBitmap = new Bitmap(Width, Height);
         }
+        public int Width { get; set; }
+        public int Height { get; set; }
+
         public abstract void Create();
 
         public Bitmap FractalBitmap { get; set; }
@@ -26,16 +34,13 @@ namespace FractalsLibrary
 
     public class PifagorTree : FractalBase
     {
-        public PifagorTree(Point startPoint, double iteration, double angle) : base(1024, 768)
+        public PifagorTree(int width, int height)
+            : base(width, height)
         {
-            StartPoint = startPoint;
-            Iteration = iteration;
-            Angle = angle;
+            //StartPoint = startPoint;
+            //Iteration = iteration;
+            //Angle = angle;
         }
-
-        public const double Angle90 = Math.PI / 2;
-        public const double Angle45 = Math.PI / 4;
-        public const double Angle30 = Math.PI / 6;
 
         public Point StartPoint { get; set; }
 
@@ -45,7 +50,7 @@ namespace FractalsLibrary
 
         public override void Create()
         {
-            CreateTree(StartPoint, Angle90);
+            CreateTree(StartPoint, MathHelper.Angle90);
         }
 
         private void CreateTree(Point pOld, double angle)
@@ -53,6 +58,7 @@ namespace FractalsLibrary
             if (Iteration > 2)
             {
                 Iteration *= 0.7;
+
                 // Считаем координаты для вершины-ребенка
                 var xNew = (int)Math.Round(pOld.X + Iteration * Math.Cos(angle));
                 var yNew = (int)Math.Round(pOld.Y - Iteration * Math.Sin(angle));
@@ -66,8 +72,8 @@ namespace FractalsLibrary
                 pOld.Y = yNew;
 
                 // Вызываем рекурсивную функцию для левого и правого ребенка
-                CreateTree(pOld, angle + Angle45);
-                CreateTree(pOld, angle - Angle30);
+                CreateTree(pOld, angle + MathHelper.Angle45);
+                CreateTree(pOld, angle - MathHelper.Angle30);
             }
         }
 
@@ -78,6 +84,7 @@ namespace FractalsLibrary
 
             // Вектор от p1 к p2
             // Окрасить пиксели в направлении вектора между точками в выбранный цвет
+            // TODO: алгоритм построения линии
             this.FractalBitmap.SetPixel(p1.X, p2.Y, Color.Red);
         }
     }
